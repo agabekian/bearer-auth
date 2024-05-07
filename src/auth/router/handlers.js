@@ -9,8 +9,7 @@ async function handleSignup(req, res, next) {
     let userRecord = await users.create(req.body);
 
     const output = {
-      username: userRecord,
-      password: userRecord,
+      user: userRecord,
       token: userRecord.token
     };
     res.status(200).json(output);
