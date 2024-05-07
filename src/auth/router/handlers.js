@@ -7,7 +7,7 @@ async function handleSignup(req, res, next) {
   try {
 
     let userRecord = await users.create(req.body);
-
+    console.log("!!!!!!!!!!!!!!!!!",userRecord)
     const output = {
       user: userRecord,
       token: userRecord.token

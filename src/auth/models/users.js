@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 const bcrypt = require('bcrypt');
-const {sign,} = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const userSchema = (sequelize, DataTypes) => {
     const model = sequelize.define('User', {
@@ -11,10 +11,10 @@ const userSchema = (sequelize, DataTypes) => {
         token: {
             type: DataTypes.VIRTUAL,
             get() { //method
-                return sign({username: this.username}, SECRET);
+                return jwt.sign({username: this.username}, SECRET);
             },
             set(tokenObj) {
-                let token = sign(tokenObj, SECRET);
+                let token = jwt.sign(tokenObj, SECRET);
                 return token;
             }
         }
