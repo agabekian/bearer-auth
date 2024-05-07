@@ -1,12 +1,16 @@
 'use strict';
 
-const { users } = require('../models/index.js');
+const { users } = require('../models/index');
 
 async function handleSignup(req, res, next) {
+  console.log("#################",req.body);
   try {
+
     let userRecord = await users.create(req.body);
+
     const output = {
-      user: userRecord,
+      username: userRecord,
+      password: userRecord,
       token: userRecord.token
     };
     res.status(200).json(output);

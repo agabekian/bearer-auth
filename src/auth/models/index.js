@@ -26,7 +26,7 @@ switch (environment) {
   default:
     console.log('Connecting to ' + DATABASE_URL, db_config);
 }
-
+//BUG 1 - didn't have .env so error was "must be a string", instead of undefined
 const sequelize = new Sequelize(DATABASE_URL, db_config);
 
 module.exports = {
