@@ -3,11 +3,8 @@
 const { users } = require('../models/index');
 
 async function handleSignup(req, res, next) {
-  console.log("#################",req.body);
   try {
-
     let userRecord = await users.create(req.body);
-    console.log("!!!!!!!!!!!!!!!!!",userRecord)
     const output = {
       user: userRecord,
       token: userRecord.token

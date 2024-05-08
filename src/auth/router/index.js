@@ -16,10 +16,6 @@ authRouter.post('/signup', handleSignup);
 authRouter.post('/signin', basicAuth, handleSignin);
 authRouter.get('/users', bearerAuth, handleGetUsers);
 authRouter.get('/secret', bearerAuth, handleSecret);
-authRouter.get('/', greet);
 
-function greet(req, res, next) {
-  res.send("router is broken so far")
-}
 
 module.exports = authRouter;
