@@ -33,10 +33,9 @@ async function handleSignin(req, res, next) {
 }
 
 async function handleGetUsers(req, res, next) {
-  console.log(handleGetUsers)
   try {
     const userRecords = await users.findAll({});
-    const list = users.map(user => user.username);
+    const list = userRecords.map(user => user.username);
     res.status(200).json(list);
   } catch (e) {
     console.error(e);

@@ -20,7 +20,6 @@ authRouter.get('/', greet);
 
 function greet(req, res, next) {
   res.send("router is broken so far")
-  console.log("router is broken so far")
 }
 
 module.exports = authRouter;
