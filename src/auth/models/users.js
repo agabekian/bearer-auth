@@ -14,8 +14,7 @@ const userSchema = (sequelize, DataTypes) => {
                 return jwt.sign({username: this.username}, SECRET);
             },
             set(tokenObj) {
-                let token = jwt.sign(tokenObj, SECRET);
-                return token;
+                return jwt.sign(tokenObj, SECRET);
             }
         }
     });
@@ -37,8 +36,9 @@ const userSchema = (sequelize, DataTypes) => {
 
     // Bearer AUTH: Validating a token
     model.authenticateToken = async function (token) {
+        console.log(token)
         try {
-            const parsedToken = jwt.verify(token, process.env.SECRET);
+            const parsedToken = jwt.verify(token, SECRET);
             const user = this.findOne({username: parsedToken.username})
             if (user) {
                 return user;
